@@ -1,3 +1,4 @@
+import os
 import base64
 import requests
 from flask import Flask, request, jsonify
@@ -52,8 +53,8 @@ izh0uXPMnIZsmOIqnY5ksgXwb3q7AVmXoC+muQEI1Kt3e6MUW9A/Y8bScSqEL+D2
 """
 
 CORPORATE_LOGIN_URL = "https://rgw.8798-f464fa20.eu-de.ri1.apiconnect.appdomain.cloud/tmfb/dev-catalog/CorporateLogin/"
-CLIENT_ID = "924726a273f72a75733787680810c4e4"
-CLIENT_SECRET = "7154c95b3351d88cb31302f297eb5a9c"
+CLIENT_ID = os.environ.get("IBM_CLIENT_ID", "")
+CLIENT_SECRET = os.environ.get("IBM_CLIENT_SECRET", "")
 
 @app.route("/login", methods=["POST"])
 def corporate_login():
